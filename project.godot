@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="Incognito"
+run/main_scene="uid://duq2kps6ykc06"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

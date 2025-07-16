@@ -12,6 +12,11 @@ const SPEED: float = 5.5
 var sensitivity: float = 0.5
 var speed: float = 500.0
 
+# Variables - Tilt
+var target_tilt = 0.0
+var tilt_str = 3.0
+var tilt_speed = 8.0
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -33,4 +38,13 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction.x * SPEED
 	velocity.z = direction.z * SPEED
 	
+	handle_cam_tilt(delta)
+	
 	move_and_slide()
+
+func handle_cam_tilt(delta):
+	# Cam tilt
+	var left_strength = Input.get_action_strength("move_left")
+	var right_strength = Input.get_action_strength("move_right")
+	target_tilt = (left_strength - right_strength) * tilt_str
+	cam.rotation_degrees.z = lerp(cam.rotation_degrees.z, target_tilt, tilt_speed * delta)

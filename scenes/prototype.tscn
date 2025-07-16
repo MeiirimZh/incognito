@@ -1,8 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://duq2kps6ykc06"]
+[gd_scene load_steps=5 format=3 uid="uid://duq2kps6ykc06"]
 
 [ext_resource type="PackedScene" uid="uid://cyr57ak32igcc" path="res://entities/player.tscn" id="1_ixygg"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ixygg"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_20kwy"]
+sky_material = SubResource("ProceduralSkyMaterial_ixygg")
+
+[sub_resource type="Environment" id="Environment_nhfup"]
+background_mode = 2
+sky = SubResource("Sky_20kwy")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="Prototype" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nhfup")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.398675, 0)

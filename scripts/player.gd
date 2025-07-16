@@ -7,6 +7,8 @@ class_name Player
 
 # Constants
 const SPEED: float = 5.5
+const GRAVITY: float = 9.8
+const JUMP_FORCE: float = 6.0
 
 # Variables
 var sensitivity: float = 0.5
@@ -37,6 +39,11 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x = direction.x * SPEED
 	velocity.z = direction.z * SPEED
+	
+	velocity.y -= GRAVITY * delta
+	
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_FORCE
 	
 	handle_cam_tilt(delta)
 	

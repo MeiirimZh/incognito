@@ -26,6 +26,7 @@ shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.398675, 0)
-size = Vector3(8, 0.802734, 10)
+use_collision = true
+size = Vector3(20, 0.802734, 20)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_ixygg")]
